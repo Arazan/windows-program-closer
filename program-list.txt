@@ -1,0 +1,44 @@
+# Program List Configuration File
+# Lines starting with # are comments and will be ignored
+# List one program name per line (without .exe extension)
+# 
+# Common programs you might want to close:
+
+# Web Browsers
+# chrome
+# firefox
+# msedge
+# brave
+
+# Office Applications
+# winword
+# excel
+# powerpnt
+# outlook
+
+# Media Players
+# vlc
+# wmplayer
+spotify
+
+# Text Editors
+# notepad
+# notepad++
+# code
+
+# Communication
+# discord
+# slack
+# teams
+
+# Games (Steam, Epic, etc.)
+# steam
+# epicgameslauncher
+
+# System Tools
+# taskmgr
+# calculator
+
+# Add your programs below (remove the # to enable):
+# notepad
+# calculator
