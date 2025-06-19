@@ -6,6 +6,7 @@ A PowerShell-based script for closing specific Windows programs with various opt
 
 - **Multiple execution methods**: PowerShell script with batch file wrapper
 - **Flexible program specification**: Command line parameters or configuration file
+- **Wildcard support**: Use `*` and `?` patterns to match multiple processes
 - **Graceful and force close options**: Try graceful shutdown first, force if needed
 - **Logging**: All actions are logged with timestamps
 - **Preview mode**: See what would be closed without actually closing
@@ -89,13 +90,38 @@ notepad
 chrome
 firefox
 calculator
+
+# Wildcard patterns are supported:
+*chrome*    # Matches all Chrome-related processes
+notepad*    # Matches notepad and notepad++
+*office*    # Matches all Office applications
+java*       # Matches all Java processes
 ```
+
+### Wildcard Patterns
+
+The script supports PowerShell wildcard patterns:
+- `*` - Matches any number of characters
+- `?` - Matches a single character
+- `*chrome*` - Matches any process containing "chrome"
+- `notepad*` - Matches processes starting with "notepad"
+- `*update*` - Matches any process containing "update"
 
 ## Examples
 
 ### Close Common Programs
 ```batch
 close-programs.bat notepad chrome firefox discord
+```
+
+### Close All Chrome-Related Processes
+```batch
+close-programs.bat "*chrome*"
+```
+
+### Close All Processes Starting with "java"
+```batch
+close-programs.bat "java*"
 ```
 
 ### Force Close All Programs from Config

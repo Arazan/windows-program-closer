@@ -2,6 +2,12 @@
 # Lines starting with # are comments and will be ignored
 # List one program name per line (without .exe extension)
 # 
+# WILDCARD SUPPORT:
+# You can use wildcards (* and ?) to match multiple processes:
+# *chrome* - matches any process containing "chrome" (chrome, chrome_proxy, etc.)
+# notepad* - matches processes starting with "notepad" (notepad, notepad++)
+# *office* - matches any process containing "office"
+# 
 # Common programs you might want to close:
 
 # Web Browsers
@@ -9,12 +15,14 @@
 # firefox
 # msedge
 # brave
+# *chrome*    # Matches all Chrome-related processes
 
 # Office Applications
 # winword
 # excel
 # powerpnt
 # outlook
+# *office*    # Matches all Office-related processes
 
 # Media Players
 # vlc
@@ -25,6 +33,7 @@ spotify
 # notepad
 # notepad++
 # code
+# notepad*    # Matches notepad and notepad++
 
 # Communication
 # discord
@@ -38,6 +47,12 @@ spotify
 # System Tools
 # taskmgr
 # calculator
+
+# Wildcard Examples (uncomment to use):
+# *steam*     # All Steam-related processes
+# *discord*   # All Discord processes
+# java*       # All Java processes
+# *update*    # All update-related processes
 
 # Add your programs below (remove the # to enable):
 # notepad

@@ -54,8 +54,27 @@ function Close-Program {
         # Remove .exe extension if present for consistency
         $cleanProcessName = $ProcessName -replace '\.exe$', ''
         
-        # Get all processes matching the name
-        $processes = Get-Process -Name $cleanProcessName -ErrorAction SilentlyContinue
+        # Check if the process name contains wildcards
+        if ($cleanProcessName -match '[\*\?]') {
+            # Use wildcard matching to find all matching processes
+            $allProcesses = Get-Process -ErrorAction SilentlyContinue
+            $processes = $allProcesses | Where-Object { $_.ProcessName -like $cleanProcessName }
+            
+            if ($processes.Count -eq 0) {
+                Write-Log "No running processes found matching pattern '$ProcessName'" "INFO"
+                return
+            } else {
+                Write-Log "Found $($processes.Count) processes matching pattern '$ProcessName': $($processes.ProcessName -join ', ')" "INFO"
+            }
+        } else {
+            # Get processes by exact name match
+            $processes = Get-Process -Name $cleanProcessName -ErrorAction SilentlyContinue
+            
+            if (!$processes) {
+                Write-Log "No running processes found for '$ProcessName'" "INFO"
+                return
+            }
+        }
         
         if ($processes) {
             $isElevated = Test-IsElevated
@@ -148,8 +167,6 @@ function Close-Program {
                     }
                 }
             }
-        } else {
-            Write-Log "No running processes found for '$ProcessName'" "INFO"
         }
     } catch {
         Write-Log "Error processing '$ProcessName': $($_.Exception.Message)" "ERROR"
